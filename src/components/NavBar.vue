@@ -5,7 +5,7 @@
             <nav class="nav">
                 <!-- 公司Logo -->
                 <router-link to="/" class="logo">
-                    <img v-if="logoUrl" :src="logoUrl" :alt="companyName" />
+                    <img v-if="logoUrl" :src="logoUrl" :alt="companyName" class="logo-img" />
                     <span v-else>{{ companyName }}</span>
                 </router-link>
 
@@ -132,7 +132,7 @@ const copyEmail = () => {
         right: 0;
         background-color: var(--black-color);
         margin-inline: 1rem;
-        padding-block: 4rem;
+        padding-block: 2rem;
         border-radius: 2rem;
         box-shadow: var(--nav-shadow);
 
@@ -143,6 +143,14 @@ const copyEmail = () => {
         pointer-events: none;
 
         transition: transform .4s, opacity .3s;
+    }
+
+    .nav-menu-toggle {
+        display: grid;
+    }
+
+    .nav-links {
+        flex-direction: column;
     }
 }
 
@@ -172,7 +180,7 @@ const copyEmail = () => {
         height: 56px;
     }
 
-    .logo i {
+    .logo-img {
         font-size: 2rem;
     }
 
@@ -200,13 +208,13 @@ const copyEmail = () => {
     border-radius: 50%;
 }
 
-.logo i {
+.logo-img {
     font-size: 1.5rem;
     color: var(--first-color);
-    transition: transform 0.6s;
+    transition: transform 1s;
 }
 
-.logo:hover i {
+.logo-img:hover {
     transition: rotateY(-360deg);
 }
 
@@ -220,7 +228,6 @@ const copyEmail = () => {
 .nav-menu-toggle {
     width: 32px;
     height: 32px;
-    display: grid;
     place-items: center;
     background: none;
     color: var(--white-color);
@@ -232,7 +239,6 @@ const copyEmail = () => {
 .nav-links {
     text-align: center;
     display: flex;
-    flex-direction: row;
     align-items: center;
     row-gap: 1.5rem;
 }
@@ -332,30 +338,5 @@ const copyEmail = () => {
 .nav-menu-icon-rotate-leave-to {
     opacity: 0;
     transform: rotate(-90deg);
-}
-
-/*
- * 响应式设计：适配移动端
- */
-@media (max-width: 768px) {
-    .container {
-        padding: 0 16px;
-        height: 64px;
-    }
-
-    .logo {
-        font-size: 1.5rem;
-    }
-
-    /* 隐藏桌面端导航和电话 */
-    .nav-links,
-    .contact-info {
-        display: none;
-    }
-
-    /* 显示移动端菜单按钮 */
-    .menu-toggle {
-        display: block;
-    }
 }
 </style>
