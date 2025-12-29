@@ -108,7 +108,7 @@ const copyEmail = () => {
     z-index: 100;
 }
 
-/* ==================== 桌面端基础设置 ==================== */
+/* ==================== 基础设置 ==================== */
 .nav {
     height: var(--header-height);
     background-color: var(--black-color);
@@ -150,6 +150,44 @@ const copyEmail = () => {
     transform: translateY(5rem);
     opacity: 1;
     pointer-events: initial;
+}
+
+/* ==================== 桌面端基础设置 ==================== */
+@media screen and (min-width: 1150px) {
+    .container {
+        margin-inline: auto;
+    }
+
+    .header {
+        top: 2.5rem;
+    }
+
+    .nav {
+        height: calc(var(--header-height) + 1.5rem);
+        padding: .75rem 1rem;
+    }
+
+    .logo {
+        width: 56px;
+        height: 56px;
+    }
+
+    .logo i {
+        font-size: 2rem;
+    }
+
+    .nav-links {
+        flex-direction: row;
+        column-gap: 3rem;
+    }
+
+    .email-link {
+        font-size: var(--normal-font-size);
+    }
+
+    .nav-menu-toggle {
+        display: none;
+    }
 }
 
 /* ==================== Logo 样式 ==================== */
@@ -194,7 +232,7 @@ const copyEmail = () => {
 .nav-links {
     text-align: center;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
     row-gap: 1.5rem;
 }
