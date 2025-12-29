@@ -23,9 +23,9 @@
 
                 <div class="nav-buttons">
                     <!-- 联系方式 -->
-                    <button id="email-link" class="email-link">
-                        <span id="email-copy">{{ companyEmail }}</span>
-                        <span id="email-text">Copy Email</span>
+                    <button class="email-link" @click="copyEmail">
+                        <span>{{ companyEmail }}</span>
+                        <span>{{ emailStatus }}</span>
                     </button>
 
                     <!-- 移动端菜单按钮 -->
@@ -84,21 +84,18 @@ const props = defineProps({
 const isMenuOpen = ref(false)
 
 /* ========== 复制邮箱地址 ========== */
-const navEmail = document.getElementById('email-link'),
-    navCopy = document.getElementById('email-copy'),
-    navText = document.getElementById('email-text')
+const emailStatus = ref('Copy Email')
+const copyEmail = () => {
+    navigator.clipboard.writeText(props.companyEmail).then(() => {
+        emailStatus.value = 'Copied ✅'
 
-navEmail.addEventListener('click', () => {
-    // 调用剪贴板 API 复制邮箱地址
-    navigator.clipboard.writeText(navCopy).then(() => {
-        navText.innerHTML = 'Copied ✅'
-
-        // 恢复原来的内容
         setTimeout(() => {
-            navText.innerHTML = 'Copy email'
+            emailStatus.value = 'Copy Email'
         }, 2000)
+    }).catch(err => {
+        console.error('无法复制邮箱: ', err)
     })
-})
+}
 </script>
 
 <style scoped>
