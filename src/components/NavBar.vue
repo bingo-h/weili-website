@@ -106,6 +106,7 @@ const copyEmail = () => {
     left: 0;
     right: 0;
     z-index: 100;
+    background-color: #cccccc;
 }
 
 /* ==================== 基础设置 ==================== */
@@ -215,7 +216,7 @@ const copyEmail = () => {
 }
 
 .logo-img:hover {
-    transition: rotateY(-360deg);
+    transform: rotateY(-360deg);
 }
 
 /* ==================== 按钮样式 ==================== */
